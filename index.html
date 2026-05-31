@@ -1,10 +1,12 @@
 
-<!DOCTYPE html>
+                                
+        
+                   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mumbai Dreams: Superstar Simulator</title>
+    <title>Mumbai Dreams: Bollywood Elite Simulator</title>
     <style>
         :root {
             --gold: #ffcc00;
@@ -16,6 +18,7 @@
             --insta: #e1306c;
             --fb: #1877f2;
             --snap: #fffc00;
+            --scandal: #ff3333;
         }
 
         body {
@@ -27,11 +30,11 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Character Creation Overlay */
+        /* Setup Screen */
         #creation-screen {
             background: var(--card-bg);
             border: 2px solid var(--gold);
@@ -63,7 +66,7 @@
             box-sizing: border-box;
         }
 
-        /* Main Interface */
+        /* Main Game Layout */
         #game-screen {
             display: none;
         }
@@ -125,7 +128,7 @@
         .stat-card h3 { margin: 0; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
         .stat-card p { margin: 5px 0 0 0; font-size: 1.2rem; font-weight: bold; color: var(--gold); }
 
-        /* Social Media Hub */
+        /* Social Hub */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -161,6 +164,8 @@
         .btn:hover { background: #6b1d29; }
         .btn-gold { background: var(--gold); color: black; border: 1px solid #000; }
         .btn-gold:hover { background: #ffe066; }
+        .btn-danger { background: var(--maroon); border: 1px solid var(--scandal); }
+        .btn-danger:hover { background: #b30000; }
 
         /* Project Cards */
         .card {
@@ -172,7 +177,7 @@
         }
 
         #log {
-            height: 180px;
+            height: 220px;
             overflow-y: auto;
             background: #0a0506;
             padding: 10px;
@@ -188,19 +193,18 @@
 
 <div class="container">
 
-    <!-- CHARACTER CREATION SCREEN -->
+    <!-- SETUP INPUT SCREEN -->
     <div id="creation-screen">
-        <h2 style="text-align: center;">Create Your Star</h2>
+        <h2 style="text-align: center;">Enter Mumbai Industry</h2>
         <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="p-name" value="Aryan Sharma">
+            <label>Name</label>
+            <input type="text" id="p-name" value="Ranveer Malhotra">
         </div>
         <div class="form-group">
             <label>Gender</label>
             <select id="p-gender">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Non-Binary">Non-Binary</option>
             </select>
         </div>
         <div class="form-group">
@@ -210,95 +214,109 @@
                 <option value="Muslim">Muslim</option>
                 <option value="Sikh">Sikh</option>
                 <option value="Christian">Christian</option>
-                <option value="Parsi">Parsi</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Home Region</label>
+            <label>Region</label>
             <select id="p-region">
-                <option value="North India (Delhi/Punjab)">North India (Delhi/Punjab)</option>
-                <option value="West India (Maharashtra/Gujarat)">West India (Maharashtra/Gujarat)</option>
-                <option value="South India (Tollywood/Kollywood Zone)">South India (Tollywood/Kollywood Zone)</option>
-                <option value="East India (Bengal/Assam)">East India (Bengal/Assam)</option>
+                <option value="North India">North India</option>
+                <option value="West India">West India</option>
+                <option value="South India">South India</option>
+                <option value="East India">East India</option>
             </select>
         </div>
-        <button class="btn btn-gold" style="margin-top:15px;" onclick="startGame()">Board the Train to Mumbai 🎬</button>
+        <button class="btn btn-gold" style="margin-top:15px;" onclick="startGame()">Sign the First Contract 🎬</button>
     </div>
 
-    <!-- MAIN GAME SCREEN -->
+    <!-- MAIN INTERFACE -->
     <div id="game-screen">
         <header>
             <h1 id="display-name">Star Name</h1>
             <p id="display-bio">Bio Details</p>
         </header>
 
-        <!-- Stats Block -->
+        <!-- Stats Dashboard -->
         <div class="stats-grid">
-            <div class="stat-card"><h3>Bank Account</h3><p id="stat-money">₹30,000</p></div>
+            <div class="stat-card"><h3>Bank Balance</h3><p id="stat-money">₹30,000</p></div>
             <div class="stat-card"><h3>Fame Craze</h3><p id="stat-fame">0</p></div>
             <div class="stat-card"><h3>Acting Skill</h3><p id="stat-skill">10</p></div>
             <div class="stat-card"><h3>Sanskari Image</h3><p id="stat-rep">75%</p></div>
         </div>
 
-        <!-- Layout Split -->
         <div class="main-layout">
             
-            <!-- Left Side: Core Game & Auditions -->
+            <!-- Left Panel: Professional Life & Socials -->
             <div>
-                <!-- Social Media Dashboard -->
+                <!-- Social Media Dashboard & Monetization -->
                 <div class="panel">
-                    <h2>Digital Footprint (Followers)</h2>
+                    <h2>Digital Footprint & Monetization</h2>
                     <div class="social-grid">
                         <div class="social-card social-insta">📸 Insta: <span id="sm-insta">1.2K</span></div>
                         <div class="social-card social-fb">📘 FB: <span id="sm-fb">800</span></div>
-                        <div class="social-card social-snap">👻 Snap Streak: <span id="sm-snap">5</span></div>
+                        <div class="social-card social-snap">👻 Snap: <span id="sm-snap">5</span></div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <button class="btn" onclick="game.postSocial('insta')">Post Insta Reel (-₹2k)</button>
-                        <button class="btn" onclick="game.postSocial('fb')">Update FB Page</button>
-                        <button class="btn" onclick="game.postSocial('snap')">Post Snapchat Story</button>
+                    
+                    <div class="card" id="monetization-status" style="font-size:0.85rem; background:#1b0d10;">
+                        Monetization Status: Locked (Requires 100K Instagram Followers)
                     </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <button class="btn" onclick="game.postSocial('insta')">Reel (-₹2k)</button>
+                        <button class="btn" onclick="game.postSocial('fb')">FB Post</button>
+                        <button class="btn" onclick="game.postSocial('snap')">Snap Streak</button>
+                    </div>
+                    <button class="btn btn-gold" id="btn-ad-deal" style="margin-top:10px; display:none;" onclick="game.executeBrandDeal()">Sign Active Brand Endorsement Deal</button>
                 </div>
 
                 <div class="panel">
-                    <h2>Current Active Contract</h2>
-                    <div id="current-project-box"><p>No current contract. Give screen tests below.</p></div>
+                    <h2>Current Acting Assignment</h2>
+                    <div id="current-project-box"><p>No current shoot schedule. Check screen tests.</p></div>
                 </div>
 
                 <div class="panel">
-                    <h2>Casting Calls (Aram Nagar / Balaji)</h2>
+                    <h2>Active Casting Auditions</h2>
                     <div id="auditions-box"></div>
                 </div>
             </div>
 
-            <!-- Right Side: Personal Life, Relationships, & Actions -->
+            <!-- Right Panel: Relationships, Taboos, Affairs -->
             <div>
                 <div class="panel">
-                    <h2>Hustle Actions</h2>
-                    <button class="btn btn-gold" onclick="game.nextTurn()">Next Month (Survive Mumbai)</button>
-                    <button class="btn" onclick="game.trainActing()">Acting & Expressions Class (-₹5,000)</button>
-                    <button class="btn" onclick="game.buyPR()">Hire PR Team for Image Cleanup (-₹15,000)</button>
+                    <h2>Hustle Core</h2>
+                    <button class="btn btn-gold" style="font-size:1.1rem; padding:12px;" onclick="game.nextTurn()">Advance Month (Hustle)</button>
+                    <button class="btn" onclick="game.trainActing()">Drama Workshops (-₹5,000)</button>
+                    <button class="btn" onclick="game.buyPR()">Emergency PR Management (-₹20,000)</button>
                 </div>
 
+                <!-- Primary Commitments -->
                 <div class="panel">
-                    <h2>Personal Life & Relationships</h2>
-                    <div id="relationship-box" class="card">
-                        Status: Single & Struggling
+                    <h2>Primary Relationship / Marriage</h2>
+                    <div id="relationship-box" class="card">Single</div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn" style="font-size:0.85rem;" id="btn-date" onclick="game.interactRelationship()">Mingle/Date</button>
+                        <button class="btn btn-gold" style="font-size:0.85rem; display:none;" id="btn-marry" onclick="game.marryPartner()">Propose Marriage</button>
                     </div>
-                    <button class="btn" id="btn-date" onclick="game.interactRelationship()">Mingle with Co-Stars</button>
+                </div>
+
+                <!-- Uncensored Affairs & Hookups -->
+                <div class="panel" style="border: 1px solid var(--scandal);">
+                    <h2 style="color:var(--scandal);">Industry Dark Side (Affairs & Sex)</h2>
+                    <div id="affair-box" class="card" style="border-color:var(--scandal);">No active secret affairs.</div>
+                    <button class="btn btn-danger" onclick="game.pursueSecretHookup()">Seek Hidden Hookup / Casting Couch Affair</button>
+                    <button class="btn btn-danger" id="btn-booty-call" style="display:none;" onclick="game.callAffairPartner()">Call Secret Lover for Sex Arcs</button>
                 </div>
 
                 <div class="panel">
                     <h2>Awards Cabinet</h2>
-                    <div id="awards-box" style="font-size: 0.9rem; color: var(--text-muted);">No awards yet.</div>
+                    <div id="awards-box" style="font-size: 0.9rem; color: var(--text-muted);">Empty</div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Ticker Log -->
+        <!-- System Ticker -->
         <div class="panel">
-            <h2>Masala Ticker (Pinkvilla / Tabloids)</h2>
+            <h2>Bollywood Ticker (Paparazzi Feed)</h2>
             <div id="log"></div>
         </div>
     </div>
@@ -306,298 +324,345 @@
 </div>
 
 <script>
-// Content Matrix
-const CASTING_DATABASE = [
-    { platform: "DD National Serial", minSkill: 5, payRange: [20000, 40000], fame: 10, duration: 3, title: "Mitti Ki Khushboo" },
-    { platform: "Balaji Prime TV Soap", minSkill: 15, payRange: [60000, 120000], fame: 80, duration: 4, title: "Kasautii Zindagi Dubbed" },
-    { platform: "Colors TV Reality Show", minSkill: 25, payRange: [200000, 500000], fame: 350, duration: 3, title: "Bigg Boss (Wildcard)" },
-    { platform: "OTT Crime Webseries", minSkill: 45, payRange: [500000, 1200000], fame: 800, duration: 4, title: "Lokhandwala Underworld" },
-    { platform: "Bollywood Masala Film", minSkill: 70, payRange: [3000000, 10000000], fame: 3000, duration: 5, title: "Singham Returns Again" }
+const AUDITION_POOL = [
+    { platform: "B-Tier Regional Show", minSkill: 5, payRange: [20000, 40000], fame: 15, duration: 3, title: "Ghar Ki Lakshmi" },
+    { platform: "Balaji Mega Serial", minSkill: 18, payRange: [70000, 150000], fame: 120, duration: 4, title: "Kasautii Masala 3" },
+    { platform: "Prime OTT Drama", minSkill: 40, payRange: [400000, 900000], fame: 600, duration: 3, title: "Mirzapur Connection" },
+    { platform: "Bollywood High Budget Film", minSkill: 65, payRange: [2500000, 8000000], fame: 2500, duration: 5, title: "Dhoom Unlimited" }
 ];
 
-class IndianActorSimulator {
+class BollywoodStarSimulator {
     constructor(name, gender, religion, region) {
-        this.name = name;
-        this.gender = gender;
-        this.religion = religion;
-        this.region = region;
+        this.name = name; this.gender = gender; this.religion = religion; this.region = region;
 
-        // Stats
-        this.money = 30000;
-        this.fame = 0;
-        this.skill = 10;
-        this.rep = 75; // Sanskari index
-        this.months = 216; // 18 years old base
+        this.money = 30000; this.fame = 0; this.skill = 10; this.rep = 75; this.months = 216;
+        this.insta = 1200; this.fb = 800; this.snap = 5;
 
-        // Social Media
-        this.insta = 1200;
-        this.fb = 800;
-        this.snap = 5;
-
-        // Systems
-        this.partner = null; // Relationship object
+        this.partner = null;       // Main Relationship/Spouse
+        this.affairPartner = null; // Side fling
         this.currentProject = null;
         this.projectProgress = 0;
         this.awards = [];
         this.availableAuditions = [];
+        this.isMonetized = false;
     }
 
     init() {
         document.getElementById('display-name').innerText = this.name;
-        document.getElementById('display-bio').innerText = `${this.gender} | ${this.religion} | From: ${this.region}`;
+        document.getElementById('display-bio').innerText = `${this.gender} | ${this.religion} | ${this.region}`;
         this.generateAuditions();
         this.updateUI();
-        this.log(`Welcome to Mumbai, ${this.name}! You checked into a tiny 1BHK PG share house in Andheri West.`);
+        this.log(`📍 Mumbai Landing: You arrived in Andheri West looking for entry points into production sets.`);
     }
 
     updateUI() {
-        // Core Stats
         document.getElementById('stat-money').innerText = `₹${this.money.toLocaleString('en-IN')}`;
         document.getElementById('stat-fame').innerText = this.fame.toLocaleString();
         document.getElementById('stat-skill').innerText = this.skill;
         document.getElementById('stat-rep').innerText = `${this.rep}%`;
 
-        // Socials
-        document.getElementById('sm-insta').innerText = this.formatFollowers(this.insta);
-        document.getElementById('sm-fb').innerText = this.formatFollowers(this.fb);
+        document.getElementById('sm-insta').innerText = this.formatNum(this.insta);
+        document.getElementById('sm-fb').innerText = this.formatNum(this.fb);
         document.getElementById('sm-snap').innerText = this.snap;
 
-        // Project Status
+        // Monetization System Check
+        const monStatus = document.getElementById('monetization-status');
+        const adBtn = document.getElementById('btn-ad-deal');
+        if (this.insta >= 100000) {
+            this.isMonetized = true;
+            monStatus.innerHTML = `<span style="color:#00ff00; font-weight:bold;">✅ Monetization Active</span> | Passive Income: ₹${Math.floor(this.insta * 0.08).toLocaleString('en-IN')}/mo`;
+            adBtn.style.display = 'block';
+        } else {
+            monStatus.innerHTML = `Monetization Status: 🔒 Locked (Requires 100K Insta Followers. You need ${(100000 - this.insta).toLocaleString()} more)`;
+            adBtn.style.display = 'none';
+        }
+
+        // Project Status Render
         const projBox = document.getElementById('current-project-box');
         if (this.currentProject) {
-            projBox.innerHTML = `
-                <strong>${this.currentProject.title}</strong> (${this.currentProject.platform})<br>
-                Shooting Schedule: ${this.projectProgress} / ${this.currentProject.duration} Months<br>
-                Pay: ₹${this.currentProject.pay.toLocaleString('en-IN')}
-            `;
+            projBox.innerHTML = `<strong>${this.currentProject.title}</strong> [${this.currentProject.platform}]<br>Progress: ${this.projectProgress} / ${this.currentProject.duration} Mos`;
         } else {
-            projBox.innerHTML = `<p style="color: var(--text-muted);">Funemployed. Hang around casting blocks for auditions!</p>`;
+            projBox.innerHTML = `<p style="color:var(--text-muted);">No current contract. Give screen tests below.</p>`;
+        }
+
+        // Main Relationship Logic
+        const relBox = document.getElementById('relationship-box');
+        const marryBtn = document.getElementById('btn-marry');
+        if (this.partner) {
+            relBox.innerHTML = `<strong>${this.partner.married ? 'Spouse' : 'Partner'}:</strong> ${this.partner.name} (${this.partner.type})<br>Affection: ${this.partner.love}%`;
+            marryBtn.style.display = (!this.partner.married && this.partner.love >= 80) ? 'block' : 'none';
+        } else {
+            relBox.innerHTML = "Status: Single & Uncommitted";
+            marryBtn.style.display = 'none';
+        }
+
+        // Secret Affairs Panel Logic
+        const affBox = document.getElementById('affair-box');
+        const callSexBtn = document.getElementById('btn-booty-call');
+        if (this.affairPartner) {
+            affBox.innerHTML = `<strong>Secret Lover:</strong> ${this.affairPartner.name} (${this.affairPartner.role})<br>Lust Level: ${this.affairPartner.lust}%`;
+            callSexBtn.style.display = 'block';
+        } else {
+            affBox.innerHTML = "No illicit workplace affairs active.";
+            callSexBtn.style.display = 'none';
         }
 
         // Auditions Render
-        const audBox = document.getElementById('auditions-box');
-        audBox.innerHTML = '';
-        this.availableAuditions.forEach((aud, index) => {
+        const audBox = document.getElementById('auditions-box'); audBox.innerHTML = '';
+        this.availableAuditions.forEach((aud, idx) => {
             audBox.innerHTML += `
                 <div class="card">
-                    <strong>${aud.title}</strong> <span style="color:var(--gold); float:right;">Req Skill: ${aud.minSkill}</span><br>
-                    <small>Type: ${aud.platform} | Pay: ₹${aud.pay.toLocaleString('en-IN')} | Time: ${aud.duration} mos</small>
-                    <button class="btn btn-gold" style="margin-top:8px; padding:4px;" onclick="game.tryAudition(${index})">Give Screen Test</button>
-                </div>
-            `;
+                    <strong>${aud.title}</strong> (${aud.platform})<br>
+                    <small>Pay: ₹${aud.pay.toLocaleString('en-IN')} | Req Acting: ${aud.minSkill}</small>
+                    <button class="btn btn-gold" style="margin-top:5px; padding:3px; font-size:0.8rem;" onclick="game.tryAudition(${idx})">Screen Test</button>
+                </div>`;
         });
-
-        // Relationship Render
-        const relBox = document.getElementById('relationship-box');
-        const relBtn = document.getElementById('btn-date');
-        if (this.partner) {
-            relBox.innerHTML = `
-                <strong>Partner:</strong> ${this.partner.name}<br>
-                <strong>Type:</strong> ${this.partner.type}<br>
-                <strong>Love Level:</strong> ${this.partner.love}%
-            `;
-            relBtn.innerText = "Spend Quality Time / Go on Date (-₹5,000)";
-        } else {
-            relBox.innerHTML = "Status: Single & Focused on Career";
-            relBtn.innerText = "Mingle with Co-Stars & Castings";
-        }
 
         // Awards Render
         const awBox = document.getElementById('awards-box');
-        awBox.innerHTML = this.awards.length > 0 ? this.awards.map(a => `🏆 ${a}`).join('<br>') : "No awards yet.";
+        awBox.innerHTML = this.awards.length > 0 ? this.awards.map(a => `🏆 ${a}`).join('<br>') : "No awards collected.";
     }
 
-    formatFollowers(num) {
-        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-        if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-        return num;
+    formatNum(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+        if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+        return n;
     }
 
-    log(msg) {
-        const logBox = document.getElementById('log');
-        logBox.innerHTML = `<div class="log-entry">${msg}</div>` + logBox.innerHTML;
+    log(m) {
+        const lb = document.getElementById('log');
+        lb.innerHTML = `<div class="log-entry">${m}</div>` + lb.innerHTML;
     }
 
     generateAuditions() {
         this.availableAuditions = [];
         for (let i = 0; i < 3; i++) {
-            let roll = CASTING_DATABASE[Math.floor(Math.random() * CASTING_DATABASE.length)];
-            if (this.skill < 25 && Math.random() > 0.1) roll = CASTING_DATABASE[Math.floor(Math.random() * 2)];
-            
-            this.availableAuditions.push({
-                ...roll,
-                pay: Math.floor(roll.payRange[0] + Math.random() * (roll.payRange[1] - roll.payRange[0]))
-            });
+            let base = AUDITION_POOL[Math.floor(Math.random() * AUDITION_POOL.length)];
+            if (this.skill < 25 && Math.random() > 0.1) base = AUDITION_POOL[Math.floor(Math.random() * 2)];
+            this.availableAuditions.push({ ...base, pay: Math.floor(base.payRange[0] + Math.random() * (base.payRange[1] - base.payRange[0])) });
         }
     }
 
-    tryAudition(index) {
-        if (this.currentProject) {
-            alert("You are already signed to a shooting contract!");
-            return;
-        }
-        const aud = this.availableAuditions[index];
+    tryAudition(idx) {
+        if (this.currentProject) return alert("You cannot jump production calendars mid-shoot!");
+        const aud = this.availableAuditions[idx];
         let chance = 40 + (this.skill - aud.minSkill) * 3;
-        chance = Math.max(5, Math.min(95, chance));
-
-        if (Math.random() * 100 < chance) {
-            this.currentProject = aud;
-            this.projectProgress = 0;
-            this.log(`🎉 SELECTED! You landed the role of a lifetime in "${aud.title}" (${aud.platform})!`);
-            this.availableAuditions.splice(index, 1);
+        if (Math.random() * 100 < Math.max(5, Math.min(95, chance))) {
+            this.currentProject = aud; this.projectProgress = 0;
+            this.log(`🎉 Contract Won: Signed contract for "${aud.title}" (${aud.platform}).`);
+            this.availableAuditions.splice(idx, 1);
         } else {
-            this.log(`❌ Rejection at screen test for "${aud.title}". Casting director said you lacked the required screen presence.`);
+            this.log(`❌ Screen-test mismatch for "${aud.title}". Casting agents passed.`);
         }
         this.updateUI();
     }
 
-    postSocial(platform) {
-        if (platform === 'insta') {
-            if (this.money < 2000) return alert("No money for aesthetic outfits!");
+    postSocial(p) {
+        if (p === 'insta') {
+            if (this.money < 2000) return alert("Out of investment capital for high-end aesthetic outfits.");
             this.money -= 2000;
-            let gain = Math.floor(50 + (this.fame * 0.15) + Math.random() * 100);
-            this.insta += gain;
-            this.log(`📸 You dropped a transitional dance reel. Gained ${gain} Instagram followers.`);
-        } else if (platform === 'fb') {
-            let gain = Math.floor(10 + (this.insta * 0.02));
-            this.fb += gain;
-            this.log(`📘 You updated your Facebook banner with a traditional family outfit. Relatives and aunties shared it.`);
-        } else if (platform === 'snap') {
+            let up = Math.floor(60 + (this.fame * 0.2) + Math.random() * 150); this.insta += up;
+            this.log(`📸 Posted stylized transitional reels. Instagram audience base grew by ${up}.`);
+        } else if (p === 'fb') {
+            let up = Math.floor(15 + (this.insta * 0.02)); this.fb += up;
+            this.log(`📘 Uploaded traditional behind-the-scenes family shoot. Shared heavily across localized Facebook groups.`);
+        } else if (p === 'snap') {
             this.snap += 1;
-            if (Math.random() > 0.85) {
-                this.rep = Math.max(0, this.rep - 10);
-                this.log(`🚨 SPICY! Your private Snapchat story complaining about a lazy producer got leaked to Reddit!`);
-            } else {
-                this.log(`👻 Disappearing mirror selfies posted. Snapstreak updated.`);
-            }
+            if (Math.random() > 0.9) {
+                this.rep = Math.max(0, this.rep - 15);
+                this.log(`🚨 Scandal: Casual backstage footage from your smartphone leaked via secondary private Snapchat logs!`);
+            } else { this.log(`👻 Snap status streak prolonged.`); }
         }
+        this.updateUI();
+    }
+
+    executeBrandDeal() {
+        if (!this.isMonetized) return;
+        let payment = Math.floor(this.insta * 0.4);
+        this.money += payment;
+        this.rep = Math.max(10, this.rep - 5); // Minimal commercial burnout drop
+        this.log(`💸 Paid Sponsorship: You promoted a commercial skin whitening cream / betting platform on your feed. Earned ₹${payment.toLocaleString('en-IN')} upfront.`);
         this.updateUI();
     }
 
     interactRelationship() {
         if (!this.partner) {
-            // Roll for a potential partner
-            if (Math.random() > 0.5) {
-                const names = this.gender === 'Male' ? ["Priya Patel", "Ananya Iyer", "Sania Mirza", "Kiran Rao"] : ["Rohan Kapoor", "Kabir Singh", "Aman Khan", "Vikram Malhotra"];
-                const types = ["Co-Star", "Nepo-Baby Influencer", "TV Daily Soap Villain Actor", "Childhood Friend from home state"];
-                this.partner = {
-                    name: names[Math.floor(Math.random() * names.length)],
-                    type: types[Math.floor(Math.random() * types.length)],
-                    love: 50
-                };
-                this.log(`❤️ LINK-UP! You started hanging out out with ${this.partner.name} (${this.partner.type}) after a shoot.`);
-            } else {
-                this.log(`💔 You tried networking at a cafe, but left alone without any romantic chemistry.`);
-            }
+            const names = this.gender === 'Male' ? ["Kriti Sen", "Rhea Chakraborty", "Pooja Hegde"] : ["Ishaan Khatter", "Aditya Roy", "Tiger Shroff"];
+            this.partner = { name: names[Math.floor(Math.random() * names.length)], type: "Industry Co-Star", love: 50, married: false };
+            this.log(`❤️ Official Relationship started with high-profile talent ${this.partner.name}.`);
         } else {
-            // Maintain relationship
-            if (this.money < 5000) return alert("Too broke to treat your partner to a nice Bandra dinner!");
-            this.money -= 5000;
-            this.partner.love = Math.min(100, this.partner.love + 15);
-            this.log(`🥂 Date Night: You took ${this.partner.name} to an upscale restaurant. Relationship strengthened!`);
-            
-            // Shared social media boost
-            let boost = Math.floor(100 + (this.insta * 0.05));
-            this.insta += boost;
-            this.log(`📱 Couple goals! A joint post gained you ${boost} collaborative followers.`);
+            if (this.money < 8000) return alert("Insufficient funds for high-class Mumbai hospitality.");
+            this.money -= 8000; this.partner.love = Math.min(100, this.partner.love + 20);
+            this.log(`🥂 public Display: Booked luxury tables at a boutique hotel in Colaba with ${this.partner.name}.`);
         }
         this.updateUI();
     }
 
+    marryPartner() {
+        if (!this.partner || this.partner.love < 80) return;
+        if (this.money < 500000) return alert("A wedding in Udaipur or Italy requires at least ₹5,000,000 in liquid resources!");
+        this.money -= 400000; this.partner.married = true; this.fame += 1500; this.rep = Math.min(100, this.rep + 20);
+        this.log(`💍 Big Fat Bollywood Wedding! You tied the knot with ${this.partner.name}. The wedding coverage trended #1 on Twitter, heavily driving your family image rating up.`);
+        this.updateUI();
+    }
+
+    pursueSecretHookup() {
+        const types = [
+            { name: "Ekta-clone Studio Head", role: "Executive Producer" },
+            { name: "Prominent Star Kid", role: "Lead Actor" },
+            { name: "Fashion Photographer", role: "Staged Crew Chief" }
+        ];
+        const selection = types[Math.floor(Math.random() * types.length)];
+        
+        if (this.partner) {
+            this.log(`🔥 AFFAIR COMMENCED: Behind closed vanity van doors, you started an illicit sexual relationship with ${selection.name} (${selection.role}), cheating on your partner.`);
+        } else {
+            this.log(`🔥 Casual Secret Relationship: You established an uncommitted sexual arrangement with ${selection.name} (${selection.role}).`);
+        }
+        
+        this.affairPartner = { ...selection, lust: 60 };
+        this.updateUI();
+    }
+
+    callAffairPartner() {
+        if (!this.affairPartner) return;
+        this.affairPartner.lust = Math.min(100, this.affairPartner.lust + 15);
+        
+        let leakChance = this.partner ? 0.35 : 0.10; // Drastically higher leak threat if running a double life
+        
+        this.log(`🥵 Sexual Rendezvous: You met ${this.affairPartner.name} secretly at a private villa in Juhu for an intense night. Lust metrics maximized.`);
+        
+        // Strategic Career Payoff (Casting couch favor injection)
+        if (Math.random() > 0.5) {
+            this.skill += 4;
+            this.log(`🎬 Industry Payoff: ${this.affairPartner.name} pulled strings behind the scenes. Your network capital increased.`);
+        }
+
+        // Scandal Engine
+        if (Math.random() < leakChance) {
+            this.triggerMassiveSexScandal();
+        }
+        this.updateUI();
+    }
+
+    triggerMassiveSexScandal() {
+        this.rep = Math.max(0, this.rep - 55);
+        this.fame += 5000; // Scandal drives explosive, negative notoriety
+        this.log(`🚨 LEAK WARNING! Viral Bhayani and Reddit Bollywood Blinds leaked clear hidden camera footage / hotel records of you sleeping with ${this.affairPartner.name}!`);
+        
+        if (this.partner) {
+            this.partner.love = 0;
+            if (this.partner.married) {
+                let settlement = Math.floor(this.money * 0.5);
+                this.money -= settlement;
+                this.log(`💔 DIVORCE FILED: ${this.partner.name} discovered the affair and walked away with ₹${settlement.toLocaleString('en-IN')} in a highly publicized court dispute.`);
+            } else {
+                this.log(`💔 BRUTAL BREAKUP: ${this.partner.name} issued a scathing public statement ending your partnership over infidelity.`);
+            }
+            this.partner = null;
+        }
+        
+        // Chance of complete blacklist / cancellation
+        if (Math.random() > 0.5) {
+            this.currentProject = null;
+            this.log(`🚫 PRODUCTION CANCELLATION: Producers panicked over the toxic public backlash and terminated your running film roles.`);
+        }
+        this.affairPartner = null;
+    }
+
     trainActing() {
-        if (this.money < 5000) return alert("Insufficient funds for acting classes.");
-        this.money -= 5000;
-        this.skill += 6;
-        this.log("🎭 Workshop: You mastered shedding perfect glycerine tears from a single eye on cue.");
+        if (this.money < 5000) return alert("Insufficient capital for development modules.");
+        this.money -= 5000; this.skill += 6;
+        this.log("🎭 Expression Matrix: Trained advanced physical gestures and crying triggers.");
         this.updateUI();
     }
 
     buyPR() {
-        if (this.money < 15000) return alert("PR agencies don't work for free!");
-        this.money -= 15000;
-        this.rep = Math.min(100, this.rep + 25);
-        this.log("✨ PR Cleaned it: Paid portals removed bad comments and posted articles about your humble upbringing.");
+        if (this.money < 20000) return alert("Top tier PR damage controllers command premium rates!");
+        this.money -= 20000; this.rep = Math.min(100, this.rep + 30);
+        this.log("✨ Image Overhaul: Paid media accounts published stories about your deep spiritual conversions and philanthropy to clean your name.");
         this.updateUI();
     }
 
     nextTurn() {
         this.months += 1;
         
-        // Cost of living deductions based on career size
-        let cost = 12000;
-        if (this.fame > 1000) cost = 35000; // Moving to a luxury flat in Bandra
+        // Economic scaling structures
+        let cost = this.fame > 2000 ? 45000 : 12000;
         this.money -= cost;
 
-        // Process Film/TV Contract schedules
+        // Passive Platform Monitization Income 
+        if (this.isMonetized) {
+            let adPay = Math.floor(this.insta * 0.08);
+            this.money += adPay;
+        }
+
+        // Shooting Progression Logic
         if (this.currentProject) {
             this.projectProgress += 1;
-            // Dynamic show scaling
-            this.insta += Math.floor(this.currentProject.fame * 1.2);
+            this.insta += Math.floor(this.currentProject.fame * 1.5);
             this.fame += this.currentProject.fame;
 
             if (this.projectProgress >= this.currentProject.duration) {
                 this.money += this.currentProject.pay;
-                this.log(`🎬 PACK UP! Completed "${this.currentProject.title}". Received paycheck of ₹${this.currentProject.pay.toLocaleString('en-IN')}.`);
+                this.log(`🎬 Production Wrapped: Finished working on "${this.currentProject.title}". Distributed payment: ₹${this.currentProject.pay.toLocaleString('en-IN')}.`);
                 
-                // Awards Engine Check
-                if (this.currentProject.platform.includes("Bollywood") && this.skill > 65) {
-                    this.awards.push(`Filmfare Best Debut ("${this.currentProject.title}")`);
-                    this.log("🏆 HISTORIC: You walked the red carpet and won a Filmfare trophy!");
-                } else if (this.currentProject.platform.includes("Soap")) {
-                    this.awards.push(`ITA Best Screen Pair`);
-                    this.log("🏆 TV Industry loves you! Won an Indian Telly Award.");
+                if (this.currentProject.platform.includes("Bollywood") && this.skill > 60) {
+                    this.awards.push(`Filmfare Golden Trophy ("${this.currentProject.title}")`);
+                    this.log("🏆 CRITICAL ACHIEVEMENT: Won Best Mainstream Actor at Filmfare!");
                 }
                 this.currentProject = null;
             }
         }
 
-        // Handle Relationship degradation or events
-        if (this.partner) {
-            this.partner.love -= 5; // Passive drop over work schedules
-            if (this.partner.love <= 15) {
-                this.log(`💔 BREAKUP NEWS: ${this.partner.name} left you due to toxic work schedules and zero time allocations.`);
-                this.partner = null;
-            } else if (Math.random() > 0.85) {
-                this.log(`📸 PAPARAZZI TRACKING: Images of you fighting with ${this.partner.name} leaked to Viral Bhayani's page!`);
-                this.rep = Math.max(0, this.rep - 12);
+        // Active Affair Friction
+        if (this.affairPartner) {
+            this.affairPartner.lust -= 8;
+            if (this.affairPartner.lust < 15) {
+                this.log(`🤫 Secret arrangement with ${this.affairPartner.name} naturally faded out due to industry cooling.`);
+                this.affairPartner = null;
             }
         }
 
-        // Random Industry / Cultural Events
-        if (Math.random() > 0.8) this.triggerRegionalMasalaEvent();
+        // Passive relationship cooling
+        if (this.partner) {
+            this.partner.love -= 6;
+            if (this.partner.love <= 10) {
+                this.log(`💔 Estrangement: ${this.partner.name} quietly dissolved commitments due to cold communication gaps.`);
+                this.partner = null;
+            }
+        }
 
         if (this.months % 2 === 0) this.generateAuditions();
+        if (Math.random() > 0.85) this.triggerWildIndustryEvent();
         this.updateUI();
     }
 
-    triggerRegionalMasalaEvent() {
+    triggerWildIndustryEvent() {
         const events = [
-            { text: `A major troll page targets your old family values. Your ${this.religion} traditional base defends you fiercely!`, fame: 200, rep: 10, money: 0 },
-            { text: `You starred in a commercial for a local jewelry brand popular in your hometown region. Good payout.`, fame: 50, rep: 5, money: 80000 },
-            { text: `🚨 CONTROVERSY! An old video surfaced of you mocking an airport official. #Boycott trend launched.`, fame: 10, rep: -30, money: 0 },
-            { text: `You got invited to perform a dance set at an industrialist family wedding in Udaipur. Huge cash injection!`, fame: 500, rep: 0, money: 250000 }
+            { text: "A high-ranking political group calls for a full boycott of your background heritage. Image hits low margins.", fame: 50, rep: -20, money: 0 },
+            { text: "Your leaked text logs discussing wild late-night rave scenes circulate around industry WhatsApp groups.", fame: 600, rep: -15, money: 0 },
+            { text: "You performed a high-energy dance medley at an elite billionaire family cruise event in Europe.", fame: 1200, rep: 5, money: 400000 }
         ];
-        const ev = events[Math.floor(Math.random() * events.length)];
-        this.fame += ev.fame;
-        this.rep = Math.max(0, Math.min(100, this.rep + ev.rep));
-        this.money += ev.money;
-        this.log(`✨ [Masala Update]: ${ev.text}`);
+        const e = events[Math.floor(Math.random() * events.length)];
+        this.fame += e.fame; this.rep = Math.max(0, Math.min(100, this.rep + e.rep)); this.money += e.money;
+        this.log(`✨ [Industry Event Feed]: ${e.text}`);
     }
 }
 
 let game;
 function startGame() {
-    const name = document.getElementById('p-name').value;
-    const gender = document.getElementById('p-gender').value;
-    const religion = document.getElementById('p-religion').value;
-    const region = document.getElementById('p-region').value;
-
+    game = new BollywoodStarSimulator(
+        document.getElementById('p-name').value,
+        document.getElementById('p-gender').value,
+        document.getElementById('p-religion').value,
+        document.getElementById('p-region').value
+    );
     document.getElementById('creation-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
-
-    game = new IndianActorSimulator(name, gender, religion, region);
     game.init();
 }
 </script>
 </body>
 </html>
+     
